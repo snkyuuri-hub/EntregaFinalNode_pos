@@ -1,0 +1,9 @@
+pasta actor->author
+pasta movies->books
+
+arquivos->Actor.js->Author.js
+Movies.js->Book.js
+actorController.js->authorController.js
+
+actor.js(rotas)->author.js
+actorService.js->authorService.js

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Livros</title>
+</head>
+<body>
+    <div>
+        <h1>Criação de usuário</h1>
+        <input name-user type="text" placeholder="Nome do usuário">
+        <input email type="email" placeholder="Informe o email">
+        <input password type="password" placeholder="Informe a senha">
+        <button criar>Criar</button>
+    </div>
+
+    <div>
+        <h1>Lista de Livros</h1>
+        <div class="container"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    // Buscar livros
+    const buscar = async () => {
+        let books = await fetch("http://localhost:3000/book", {
+            headers: {
+                "x-api-key": "e835be2b847991f821f4114f2720d488"
+            }
+        });
+
+        books = await books.json();
+
+        const container = document.querySelector('.container');
+
+        books.forEach(book => {
+            container.insertAdjacentHTML('beforeend', `
+            <div class="content">
+                <h2 class="book-title">${book.title}</h2>
+                <div class="book-info">
+                    <p>Autor: ${book.author}</p>
+                    <p>Ano: ${book.year}</p>
+                    <p>ISBN: ${book.isbn}</p>
+                    <p>Editora ID: ${book.publisherId}</p>
+                </div>
+            </div>
+            `);
+        });
+    };
+
+    buscar();
+
+    // Criar usuário
+    const criar = document.querySelector('[criar]');
+    criar.onclick = async () => {
+        const name = document.querySelector('[name-user]').value;
+        const email = document.querySelector('[email]').value;
+        const password = document.querySelector('[password]').value;
+
+        const body = { name, email, password };
+
+        const user = await fetch("http://localhost:3000/user", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": "e835be2b847991f821f4114f2720d488"
+            },
+            body: JSON.stringify(body)
+        });
+
+        const data = await user.json();
+        console.log(data);
+    };
+</script>
+
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        margin: 20px;
+    }
+    .content {
+        padding: 20px;
+        margin: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
