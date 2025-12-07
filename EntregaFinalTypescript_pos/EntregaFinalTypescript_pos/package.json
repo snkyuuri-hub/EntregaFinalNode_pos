@@ -1,0 +1,27 @@
+{
+  "name": "entregafinalnode_pos",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --env-file=.env --watch server.js",
+    "db": "node --env-file=.env ./src/model/index.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sequelize/mysql": "^7.0.0-alpha.46",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

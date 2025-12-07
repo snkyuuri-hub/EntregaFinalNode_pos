@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    /* Diretórios */
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    /* Configurações de ambiente */
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Tipagem e checagem */
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    /* Mapear caminhos */
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@controllers/*": ["controllers/*"],
+      "@middleware/*": ["middleware/*"],
+      "@models/*": ["model/*"],
+      "@services/*": ["services/*"],
+      "@routers/*": ["routers/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
